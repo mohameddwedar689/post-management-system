@@ -1,3 +1,4 @@
+const { randomUUID } = require('crypto')
 const Post = require('../../domain/post/Post');
 
 async function createPost(postRepository, postData) {
@@ -7,7 +8,7 @@ async function createPost(postRepository, postData) {
         throw new Error("Invalid post data");
     }
 
-    const post = new Post(uuidv4(), title, content, author, new Date(), new Date());
+    const post = new Post(randomUUID(), title, content, author, new Date(), new Date());
 
     return await postRepository.create(post);
 }

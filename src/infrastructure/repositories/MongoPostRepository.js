@@ -3,19 +3,19 @@ const PostModel = require('./PostModel');
 const Post = require('../../domain/post/Post');
 
 class MongoPostRepository extends PostRepository {
-    async create(post) {
-        const post = await PostModel.create({
-            title: post.title,
-            content: post.content,
-            author: post.author,
+    async create(postData) {
+        const createdPost = await PostModel.create({
+            title: postData.title,
+            content: postData.content,
+            author: postData.author,
         });
         return new Post(
-            post._id,
-            post.title,
-            post.content,
-            post.author,
-            post.createdAt,
-            post.updatedAt
+            createdPost._id,
+            createdPost.title,
+            createdPost.content,
+            createdPost.author,
+            createdPost.createdAt,
+            createdPost.updatedAt
         );
     }
 
