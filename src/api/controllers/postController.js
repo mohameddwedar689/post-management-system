@@ -2,13 +2,14 @@ const MongoPostRepository = require("../../infrastructure/repositories/MongoPost
 const createPost = require("../../application/post/createPost");
 const getPost = require("../../application/post/getPost");
 const listPosts = require("../../application/post/listPosts");
+const { publishPostCreatedEvent } = require("../../infrastructure/kafka/producer");
 
 const postRepository = new MongoPostRepository();
 
 
 async function createPostController(req, res) {
     try {
-        const post = await createPost(postRepository, req.body);
+        const post = await createPost(postRepository, publishPostCreatedEvent, req.body);
         res.status(201).json(post);
     } catch (error) {
         res.status(500).json({ error: error.message });

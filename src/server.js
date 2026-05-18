@@ -1,8 +1,9 @@
 const express = require("express");
 require("dotenv").config();
 const connectMongo = require("./infrastructure/database/mongo");
+const { connectConsumer } = require("./infrastructure/kafka/consumer");
+const { connectProducer } = require("./infrastructure/kafka/producer");
 const postRoutes = require('./api/routes/postRoutes');
-
 
 const app = express();
 app.use(express.json());
@@ -21,6 +22,11 @@ app.use('/api/posts', postRoutes);
 async function startServer() {
     try {
         await connectMongo();
+
+
+        await connectProducer();
+        await connectConsumer();
+
         app.listen(PORT, () => {
             console.log(`Server running on port ${PORT}`);
             console.log(`Database connected successfully`);
