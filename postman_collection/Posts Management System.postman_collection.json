@@ -1,0 +1,112 @@
+{
+  "info": {
+    "_postman_id": "31d90b77-fde9-4994-8f89-c10269ed1c47",
+    "name": "Posts Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27167186",
+    "_collection_link": "https://go.postman.co/collection/27167186-31d90b77-fde9-4994-8f89-c10269ed1c47?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "POST /api/posts",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Create Post\",\r\n    \"content\": \"This is the post content\",\r\n    \"author\": \"Mohamed Dwedar\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/posts",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "api",
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/posts/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/api/posts/6a0b5de93c9172efef8d2d3f",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "api",
+            "posts",
+            "6a0b5de93c9172efef8d2d3f"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List /api/posts",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Create Post\",\r\n    \"content\": \"This is the post content\",\r\n    \"author\": \"Mohamed Dwedar\"\r\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/api/posts",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "api",
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": ""
+    }
+  ]
+}
